@@ -1,0 +1,28 @@
+{
+    "offers": [
+        {
+            "id": 1,
+            "title": "Двухстворчатое окно",
+            "price": 4742,  
+            "measurement": "руб.",
+            "discount": 10,
+            "img": "../images/products/okno/img1.png"
+        },
+        {
+            "id": 2,
+            "title": "Трехстворчатое окно",
+            "price": 4742,
+            "measurement": "руб.",
+            "discount": 10,
+            "img": "../images/products/okno/img2.png"
+        },
+        {
+            "id": 3,
+            "title": "Балконный блок",
+            "price": 4742,
+            "measurement": "руб.",
+            "discount": 10,
+            "img": "../images/products/okno/img3.png"
+        }
+    ]
+}
