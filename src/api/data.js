@@ -10,3 +10,12 @@ export const getOffers = async() => {
         console.log(error);
     }
 }
+
+export const getAdvantages = async() => {
+    try {
+        const res = await instance.get('/advantages')
+        return res
+    } catch (error) {
+        console.log(error);
+    }
+}

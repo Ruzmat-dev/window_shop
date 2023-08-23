@@ -1,28 +1,61 @@
 {
-    "offers": [
-        {
-            "id": 1,
-            "title": "Двухстворчатое окно",
-            "price": 4742,  
-            "measurement": "руб.",
-            "discount": 10,
-            "img": "../images/products/okno/img1.png"
-        },
-        {
-            "id": 2,
-            "title": "Трехстворчатое окно",
-            "price": 4742,
-            "measurement": "руб.",
-            "discount": 10,
-            "img": "../images/products/okno/img2.png"
-        },
-        {
-            "id": 3,
-            "title": "Балконный блок",
-            "price": 4742,
-            "measurement": "руб.",
-            "discount": 10,
-            "img": "../images/products/okno/img3.png"
-        }
-    ]
+  "offers": [
+    {
+      "id": 1,
+      "title": "Двухстворчатое окно",
+      "price": 4742,
+      "measurement": "руб.",
+      "discount": 10,
+      "img": "../images/products/okno/img1.png"
+    },
+    {
+      "id": 2,
+      "title": "Трехстворчатое окно",
+      "price": 4742,
+      "measurement": "руб.",
+      "discount": 10,
+      "img": "../images/products/okno/img2.png"
+    },
+    {
+      "id": 3,
+      "title": "Балконный блок",
+      "price": 4742,
+      "measurement": "руб.",
+      "discount": 10,
+      "img": "../images/products/okno/img3.png"
+    }
+  ],
+
+  "advantages": [
+    {
+      "id": 1,
+      "title": "Более 10 лет",
+      "description": "Опыт работы нашей компании",
+      "img": "../images/products/group/Group1.png"
+    },
+    {
+      "id": 2,
+      "title": "Бесплатное",
+      "description": "Сервисное обслуживание",
+      "img": "../images/products/group/Group2.png"
+    },
+    {
+      "id": 3,
+      "title": "Работа по ГОСТу",
+      "description": "Вся продукция сертифицирована",
+      "img": "../images/products/group/Group3.png"
+    },
+    {
+      "id": 4,
+      "title": "Гарантия 5 лет",
+      "description": "Мы ручаемся за качество",
+      "img": "../images/products/group/Group4.png"
+    },
+    {
+      "id": 5,
+      "title": "Выгодные цены",
+      "description": "Мы ручаемся за качество ",
+      "img": "../images/products/group/Group5.png"
+    }
+  ]
 }

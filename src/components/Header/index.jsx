@@ -1,31 +1,55 @@
-import React, { useEffect } from 'react'
-import { getOffers } from '../../api/data'
+import React, { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import Modal from 'react-modal';
+
+const customStyles = {
+    content: {
+        top: '40%',
+        left: '40%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-35%, -35%)',
+        zIndex: "1000",
+        
+    }
+};
+
+//   Modal.setAppElement('#yourAppElement');
 
 const Header = () => {
+    let subtitle;
+    const [modalIsOpen, setIsOpen] = useState(false);
 
-        const dataOffers = async () => {
-            try {
-                const res = await getOffers()
-                console.log(res); 
-            }   catch ( error) {
-                console.log(error);
-            }
-        }
+    function openModal() {
+        setIsOpen(true);
+        document.body.style.overflow ="hidden"
+    }
 
-    useEffect(() => {
-        dataOffers()
-    },[])
+    function afterOpenModal() {
+        // subtitle.style.color = '#f00';
+        
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+        document.body.style.overflow ="auto"
+    }
 
     return (
         <>
             {/* Header start */}
-            <header className="header  left-0 right-0 top-0 bg-neutral ">
+            <header className="header  left-0 right-0 top-0  bg-gray-100">
                 <div className="w-10/12 mx-auto ">
                     <div className="mx-auto h-24 flex items-center justify-between">
-                        <a className="text-ms lg:text-3xl text-blue-500 font-semibold uppercase" to="/"> окно<span className="text-black">профи</span>  </a>
+                        <NavLink className="text-ms lg:text-3xl text-blue-500 font-semibold uppercase" to="/"> окно<span className="text-black">профи</span>  </NavLink>
                         <div className="space-x-4">
-                            <button className='cursor-pointer text-white bg-blue-500 text-base px-5 py-2 border border-blue-500 rounded-md transition-all ease-in-out duration-[250ms] hover:opacity-70'> Калькулятор окон </button>
-                            <button className='cursor-pointer text-blue-500 border-blue-500  text-base px-5 py-2 border rounded-md transition-all ease-in-out duration-[250ms] hover:opacity-70'> Бесплатный замер </button>
+                            <a href="#calculator">
+                                <button className='cursor-pointer text-white bg-blue-500 text-base px-5 py-2 border border-blue-500 rounded-md transition-all ease-in-out duration-[250ms] hover:opacity-70'> Калькулятор окон </button>
+                            </a>
+                            <NavLink to="/">
+                                <button onClick={openModal} className='cursor-pointer text-blue-500 border-blue-500  text-base px-5 py-2 border rounded-md transition-all ease-in-out duration-[250ms] hover:opacity-70'> Бесплатный замер </button>
+                            </NavLink>
                         </div>
                         <div className='flex gap-4'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 18 24" fill="none">
@@ -49,74 +73,35 @@ const Header = () => {
                     {/* Navbar start */}
                     <nav className='lg:flex bg-gray-100 rounded-md py-4 place-content-between text-base text-secondary mt-4 px-16 flex-wrap'>
                         <a className='whitespace-nowrap mx-1 transition-all ease-in-out duration-[250ms] hover:opacity-70' href="#">Окна</a>
-                        <a className='whitespace-nowrap mx-1 transition-all ease-in-out duration-[250ms] hover:opacity-70' href="#">Остекление балконов</a>
-                        <a className='whitespace-nowrap mx-1 transition-all ease-in-out duration-[250ms] hover:opacity-70' href="#">Остекление коттеджей</a>
-                        <a className='whitespace-nowrap mx-1 transition-all ease-in-out duration-[250ms] hover:opacity-70' href="#">Обслуживание и ремонт</a>
-                        <a className='whitespace-nowrap mx-1 transition-all ease-in-out duration-[250ms] hover:opacity-70' href="#">Цены</a>
-                        <a className='whitespace-nowrap mx-1 transition-all ease-in-out duration-[250ms] hover:opacity-70' href="#">Отзывы</a>
-                        <a className='whitespace-nowrap mx-1 transition-all ease-in-out duration-[250ms] hover:opacity-70' href="#">Контакты</a>
+                        <NavLink to="/balconies" className='whitespace-nowrap mx-1 transition-all ease-in-out duration-[250ms] hover:opacity-70' href="#">Остекление балконов</NavLink>
+                        <NavLink to="/cottages" className='whitespace-nowrap mx-1 transition-all ease-in-out duration-[250ms] hover:opacity-70' href="#">Остекление коттеджей</NavLink>
+                        <NavLink to="/maintenance" className='whitespace-nowrap mx-1 transition-all ease-in-out duration-[250ms] hover:opacity-70' href="#">Обслуживание и ремонт</NavLink>
+                        <NavLink to="/prices" className='whitespace-nowrap mx-1 transition-all ease-in-out duration-[250ms] hover:opacity-70' href="#">Цены</NavLink>
+                        <NavLink to="/reviews" className='whitespace-nowrap mx-1 transition-all ease-in-out duration-[250ms] hover:opacity-70' href="#">Отзывы</NavLink>
+                        <NavLink to="/contacts" className='whitespace-nowrap mx-1 transition-all ease-in-out duration-[250ms] hover:opacity-70' href="#">Контакты</NavLink>
                     </nav>
                     {/* Navbar end */}
                 </div>
             </header>
             {/* Header end */}
 
-            {/* Main start */}
-            <main className='mt-20 lg:mt-0 content min-h-[79vh] relative'>
-                <div className="opacity: 1">
-                    <div className="bg-neutral relative ">
-                        <section className='w-full  mx-auto lg:container px-0'>
-                            <div className="relative   w-10/12  mx-auto  mt-20 lg:mt-10  pt-20 pb-20 lg:py-22 bg-center bg-cover lg:rounded-2xl flex items-center  bg-[#7DAFE0] overflow-hidden">
-                                <div className="container flex flex-col lg:ml-20 mx-auto text-white items-start z-10 lg:max-w-2xl">
-                                    <h2 className='lg:text-5xl text-3xl font-semibold lg:w-128 leading-8'>
-                                        Остекление квартир и домов от производителя
-                                    </h2>
-                                    <p className='my-8 text-ms font-light'>Установим без наценок посредников за 5 дней с расширенной гарантией</p>
-                                    <div className='flex flex-row font-light gap-5'>
-                                        <div className="flex space-x-1">
-                                            <div className="h-6 w-6 rounded-full bg-white flex items-center justify-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
-                                                    <path d="M1 4.80952L4.11111 9L9 1" stroke="#2C7CBB" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg>
-                                            </div>
-                                            <p>Гарантия до 10 лет</p>
-                                        </div>
-                                        <div className="flex space-x-1">
-                                            <div className="h-6 w-6 rounded-full bg-white flex items-center justify-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
-                                                    <path d="M1 4.80952L4.11111 9L9 1" stroke="#2C7CBB" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg>
-                                            </div>
-                                            <p>Рассрочка 0% без переплат</p>
-                                        </div>
-                                        <div className="flex space-x-1">
-                                            <div className="h-6 w-6 rounded-full bg-white flex items-center justify-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
-                                                    <path d="M1 4.80952L4.11111 9L9 1" stroke="#2C7CBB" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg>
-                                            </div>
-                                            <p>Бесплатный замер</p>
-                                        </div>
-                                    </div>
-                                    <a href="#" className='cursor-pointer text-[#7DAFE0] bg-white px-8 py-3 rounded-md font-semibold mt-10 transition-all ease-in-out duration-[250ms] hover:opacity-70'>Рассчитать стоимость</a>
-                                </div>
-                                <div className="flex items-end md:items:center background absolute h-96 right-0 lg:right-6 bottom-6 lg:bottom-auto ">
-                                    <img src="../../../public/mainWindow.png" className='lg:ml-auto object-contain sm:object-cover h-72 lg:h-auto w-[300px] sm:w-auto' alt="" />
-                                </div>
-                            </div>
-                        </section>
-                        <section className='lg:mt-28 mt-32'>
-                            <h2 className='text-center text-3xl'>Специальное предложение</h2>
-                            <p className='uppercase select-none text-6xl tracking-wide z-0 leading-none absolute font-semibold opacity-40 border-solid text-white' style={{WebkitTextStrokeWidth : "1px" , WebkitTextStrokeColor : "#2C7CBB"}}>Специальное</p>
-                            <div className="container">
-
-                            </div>
-                        </section>
-                    </div>
+            <Modal
+                isOpen={modalIsOpen}
+                onAfterOpen={afterOpenModal}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="Example Modal"
+                // className="bg-slate-100"
+            >
+                <div className=' w-[280px] sm:w-[440px] h-[457px] lg:w-[575px] lg:h-[491px] rounded-2xl relative flex flex-col py-9 px-[10px] sm:px-[29px] lg:py-12 lg:px-12  z-50'>
+                <button onClick={closeModal}>close</button>
+                <p></p>
+                <p></p>
+                <div></div>
+                <div></div>
+                <div></div>
                 </div>
-
-            </main>
-            {/* Main end */}
+            </Modal>
         </>
     )
 }
